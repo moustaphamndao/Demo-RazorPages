@@ -10,7 +10,7 @@ namespace Demo_RazorPages.Services
     {
         private List<Employee> _employeeList;
 
-      
+
         public MockEmployeeRepository()
         {
             _employeeList = new List<Employee>()
@@ -34,5 +34,22 @@ namespace Demo_RazorPages.Services
         {
             return _employeeList.FirstOrDefault(e => e.Id == id);
         }
+
+        public Employee Update(Employee updatedEmployee)
+        {
+            Employee employeeToUpdate = _employeeList.FirstOrDefault(e => e.Id == updatedEmployee.Id);
+
+            if (employeeToUpdate != null)
+            {
+                employeeToUpdate.Name = updatedEmployee.Name;
+                employeeToUpdate.Email = updatedEmployee.Email;
+                employeeToUpdate.Department = updatedEmployee.Department;
+
+            }
+
+            return employeeToUpdate;
+
+        }
     }
 }
+

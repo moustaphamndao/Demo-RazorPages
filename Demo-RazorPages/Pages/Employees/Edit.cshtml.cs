@@ -23,11 +23,18 @@ namespace Demo_RazorPages.Pages.Employees
         {
             Employee = this.employeeRepository.GetEmployee(id);
 
-            if(Employee == null)
+            if (Employee == null)
             {
                 return RedirectToAction("/NotFound");
             }
             return Page();
+        }
+
+        public IActionResult OnPost(Employee employee)
+        {
+            Employee = this.employeeRepository.Update(employee);
+            return RedirectToPage("Index");
+
         }
     }
 }
