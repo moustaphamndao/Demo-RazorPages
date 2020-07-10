@@ -7,5 +7,7 @@ namespace Demo_RazorPages.Services
     public interface IEmployeeRepository
     {
         IEnumerable<Employee> GetAllEmployees();
+
+        Employee GetEmployee(int id);
     }
 }

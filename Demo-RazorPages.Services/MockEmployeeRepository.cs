@@ -1,6 +1,7 @@
 ﻿using Demo_RazorPages.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Demo_RazorPages.Services
@@ -8,6 +9,8 @@ namespace Demo_RazorPages.Services
     public class MockEmployeeRepository : IEmployeeRepository
     {
         private List<Employee> _employeeList;
+
+      
         public MockEmployeeRepository()
         {
             _employeeList = new List<Employee>()
@@ -25,6 +28,11 @@ namespace Demo_RazorPages.Services
         public IEnumerable<Employee> GetAllEmployees()
         {
             return _employeeList;
+        }
+
+        public Employee GetEmployee(int id)
+        {
+            return _employeeList.FirstOrDefault(e => e.Id == id);
         }
     }
 }

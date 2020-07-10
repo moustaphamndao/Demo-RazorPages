@@ -6,6 +6,7 @@ using Demo_RazorPages.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +27,17 @@ namespace Demo_RazorPages
         {
             services.AddRazorPages();
             services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+            services.Configure<RouteOptions>(options => 
+            {
+                // Generates lowercase URLs. Default is false
+                options.LowercaseUrls = true;
+                // Generates Lowercase query strings,  Default is false
+                // For LowercaseQueryStrings, LowercaseUrls must also be true
+                options.LowercaseQueryStrings = true;
+                // Append a trailing slash to the generated URLs
+                options.AppendTrailingSlash = true;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
