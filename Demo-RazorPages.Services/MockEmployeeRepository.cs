@@ -44,6 +44,7 @@ namespace Demo_RazorPages.Services
                 employeeToUpdate.Name = updatedEmployee.Name;
                 employeeToUpdate.Email = updatedEmployee.Email;
                 employeeToUpdate.Department = updatedEmployee.Department;
+                employeeToUpdate.PhotoPath = updatedEmployee.PhotoPath;
 
             }
 
