@@ -29,6 +29,10 @@ namespace Demo_RazorPages.Pages.Employees
         // We use this property to store and process the newly uploaded photo
         [BindProperty]
         public IFormFile Photo { get; set; }
+
+        [BindProperty]
+        public bool Notify { get; set; }
+        public string Message { get; set; }
         public IActionResult OnGet(int id)
         {
             Employee = this.employeeRepository.GetEmployee(id);
@@ -61,6 +65,19 @@ namespace Demo_RazorPages.Pages.Employees
 
         }
 
+        public void OnPostUpdateNotificationPreferences(int id)
+        {
+            Employee = this.employeeRepository.GetEmployee(id);
+
+            if (Notify)
+            {
+                Message = "Thank you for turning on notifications";
+            }
+            else
+            {
+                Message = "You have turned off notifications";
+            }
+        }
         private string ProcessUploadedFile()
         {
             string uniqueFileName = null;
