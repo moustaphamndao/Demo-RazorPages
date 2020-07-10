@@ -36,6 +36,7 @@ namespace Demo_RazorPages
                 options.LowercaseQueryStrings = true;
                 // Append a trailing slash to the generated URLs
                 options.AppendTrailingSlash = true;
+                options.ConstraintMap.Add("even", typeof(EvenConstraint));
             });
 
         }
