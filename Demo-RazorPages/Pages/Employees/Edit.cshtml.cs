@@ -9,24 +9,23 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Demo_RazorPages.Pages.Employees
 {
-    public class DetailsModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly IEmployeeRepository employeeRepository;
 
-        public DetailsModel(IEmployeeRepository employeeRepository)
+        public EditModel(IEmployeeRepository employeeRepository)
         {
             this.employeeRepository = employeeRepository;
         }
 
-        public Employee Employee { get; private set; }
-
+        public Employee Employee { get; set; }
         public IActionResult OnGet(int id)
         {
-            Employee  = employeeRepository.GetEmployee(id);
+            Employee = this.employeeRepository.GetEmployee(id);
 
             if(Employee == null)
             {
-                return RedirectToPage("/NotFound");
+                return RedirectToAction("/NotFound");
             }
             return Page();
         }
